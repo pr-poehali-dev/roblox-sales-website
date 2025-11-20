@@ -257,6 +257,11 @@ export default function Index() {
             <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">Контакты</a>
           </div>
         </div>
+        <div className="text-center mt-6">
+          <p className="text-xs text-muted-foreground/70">
+            Создатель: <span className="text-primary font-semibold">VorVZakone</span>
+          </p>
+        </div>
       </footer>
     </div>
   );
