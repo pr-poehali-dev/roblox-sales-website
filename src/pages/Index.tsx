@@ -9,8 +9,9 @@ const robuxPackages = [
   { id: 2, amount: 800, price: 399, bonus: 80, popular: false },
   { id: 3, amount: 1700, price: 799, bonus: 200, popular: false },
   { id: 4, amount: 4500, price: 1999, bonus: 500, popular: false },
-  { id: 5, amount: 10000, price: 3999, bonus: 1500, popular: true },
-  { id: 6, amount: 15000, price: 5999, bonus: 2500, popular: false },
+  { id: 5, amount: 10000, price: 3999, bonus: 1500, popular: false },
+  { id: 6, amount: 15000, price: 5999, bonus: 2500, popular: true },
+  { id: 7, amount: 20000, price: 7000, bonus: 3000, popular: false },
 ];
 
 const paymentMethods = [
