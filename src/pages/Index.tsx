@@ -31,10 +31,20 @@ const reviews = [
 
 const recentPurchases = [
   { name: "Александр", amount: 10000, time: "только что" },
-  { name: "Мария", amount: 4500, time: "1 мин назад" },
-  { name: "Егор", amount: 15000, time: "2 мин назад" },
-  { name: "Виктория", amount: 1700, time: "3 мин назад" },
-  { name: "Артём", amount: 20000, time: "5 мин назад" },
+  { name: "Мария", amount: 4500, time: "только что" },
+  { name: "Егор", amount: 15000, time: "только что" },
+  { name: "Виктория", amount: 1700, time: "только что" },
+  { name: "Артём", amount: 20000, time: "только что" },
+  { name: "Никита", amount: 8000, time: "только что" },
+  { name: "Полина", amount: 30000, time: "только что" },
+  { name: "Даниил", amount: 4500, time: "только что" },
+  { name: "Алиса", amount: 15000, time: "только что" },
+  { name: "Максим", amount: 10000, time: "только что" },
+  { name: "Ксения", amount: 20000, time: "только что" },
+  { name: "Иван", amount: 1700, time: "только что" },
+  { name: "София", amount: 30000, time: "только что" },
+  { name: "Дмитрий", amount: 15000, time: "только что" },
+  { name: "Анастасия", amount: 10000, time: "только что" },
 ];
 
 export default function Index() {
@@ -44,7 +54,7 @@ export default function Index() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPurchaseIndex((prev) => (prev + 1) % recentPurchases.length);
-    }, 4000);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 
