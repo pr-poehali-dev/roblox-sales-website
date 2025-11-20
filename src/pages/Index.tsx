@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const robuxPackages = [
   { id: 1, amount: 400, price: 199, bonus: 0, popular: false },
@@ -29,8 +29,24 @@ const reviews = [
   { id: 4, name: "София", rating: 4, text: "Все хорошо, робаксы получила за 2 минуты", date: "2 недели назад" },
 ];
 
+const recentPurchases = [
+  { name: "Александр", amount: 10000, time: "только что" },
+  { name: "Мария", amount: 4500, time: "1 мин назад" },
+  { name: "Егор", amount: 15000, time: "2 мин назад" },
+  { name: "Виктория", amount: 1700, time: "3 мин назад" },
+  { name: "Артём", amount: 20000, time: "5 мин назад" },
+];
+
 export default function Index() {
   const [selectedPackage, setSelectedPackage] = useState<number | null>(null);
+  const [currentPurchaseIndex, setCurrentPurchaseIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPurchaseIndex((prev) => (prev + 1) % recentPurchases.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handlePurchase = (packageId: number) => {
     setSelectedPackage(packageId);
@@ -58,7 +74,26 @@ export default function Index() {
         </div>
       </header>
 
-      <section className="container mx-auto px-4 py-16 text-center">
+      <section className="container mx-auto px-4 py-16 text-center relative">
+        <div className="absolute top-4 right-4">
+          <Card className="bg-card/95 backdrop-blur-sm border-primary/30 animate-fade-in">
+            <CardContent className="p-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                  <Icon name="User" size={20} className="text-primary" />
+                </div>
+                <div className="text-left">
+                  <p className="text-sm font-semibold">{recentPurchases[currentPurchaseIndex].name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    купил {recentPurchases[currentPurchaseIndex].amount.toLocaleString()} R$ • {recentPurchases[currentPurchaseIndex].time}
+                  </p>
+                </div>
+                <Icon name="CheckCircle2" size={20} className="text-accent" />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         <div className="animate-fade-in">
           <Badge className="mb-4 bg-accent text-accent-foreground px-4 py-2 text-sm font-semibold">
             ⚡ Мгновенная доставка
