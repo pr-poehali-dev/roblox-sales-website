@@ -54,7 +54,7 @@ export default function Index() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPurchaseIndex((prev) => (prev + 1) % recentPurchases.length);
-    }, 1000);
+    }, 1);
     return () => clearInterval(interval);
   }, []);
 
